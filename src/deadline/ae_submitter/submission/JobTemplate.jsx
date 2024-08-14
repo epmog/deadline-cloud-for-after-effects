@@ -114,7 +114,7 @@ var OPENJD_TEMPLATE = {
                     "onEnter": {
                         "command": "python",
                         "args": [
-                            "{{Task.File.font_installer}}",
+                            "{{Env.File.font_installer}}",
                             "--install",
                             "{{Session.WorkingDirectory}}"
                         ]
@@ -122,7 +122,7 @@ var OPENJD_TEMPLATE = {
                     "onExit": {
                         "command": "python",
                         "args": [
-                            "{{Task.File.font_installer}}",
+                            "{{Env.File.font_installer}}",
                             "--uninstall",
                             "{{Session.WorkingDirectory}}"
                         ]
@@ -160,7 +160,7 @@ var OPENJD_TEMPLATE = {
                 "filename": "aerender.bat",
                 "type": "TEXT",
                 "runnable": true,
-                "data": "%AFTEREFFECTS_ADAPTOR_AERENDER_EXECUTABLE% -project \"{Param.AfterEffectsProjectFile}}\" -comp \"{{Param.CompName}}\" -s {{Task.Param.Frame}} -e {{Task.Param.Frame}} \n"
+                "data": "\"%AFTEREFFECTS_ADAPTOR_AERENDER_EXECUTABLE%\" -project \"{{Param.AfterEffectsProjectFile}}\" -comp \"{{Param.CompName}}\" -s {{Task.Param.Frame}} -e {{Task.Param.Frame}} \n"
             }
             ]
         }
