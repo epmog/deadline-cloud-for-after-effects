@@ -128,9 +128,12 @@ def uninstall_font(src_path, scope=INSTALL_SCOPE_USER):
 def _find_fonts(folder):
     fonts = set()
     for path in os.listdir(folder):
+        print('path: ' + path)
         if path.startswith('assetroot-'):
             asset_dir = os.path.join(folder, path)
+            print('  asset_dir: ' + asset_dir)
             for asset_path in os.listdir(asset_dir):
+                print('    asset_path: ' + asset_path)
                 _, ext = os.path.splitext(os.path.join(asset_dir, asset_path))
                 if ext.upper() in FONT_EXTENSIONS:
                     fonts.add(os.path.join(asset_dir, asset_path))
