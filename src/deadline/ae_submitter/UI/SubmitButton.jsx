@@ -86,10 +86,12 @@ function __generateSubmitButton() {
         if(itemName != compNameToCheck)
         {
             stepsTemplate[0].stepEnvironments[0].script.embeddedFiles[0].data += "comp_name: {{Param." + compNameToCheck + "_CompName}} \n";
+            stepsTemplate[0].parameterSpace.taskParameterDefinitions[1].value = "{{Param." + compNameToCheck + "_CompName}}";
         }
         else
         {
             stepsTemplate[0].stepEnvironments[0].script.embeddedFiles[0].data += "comp_name: {{Param." + itemName + "_CompName}} \n";
+            stepsTemplate[0].parameterSpace.taskParameterDefinitions[1].value = "{{Param." + itemName + "_CompName}}";
         }
         stepsTemplate[0].stepEnvironments[0].script.embeddedFiles[0].data += "output_file_path: {{Param." + itemName + "_OutputFilePath}} \n";
         stepsTemplate[0].stepEnvironments[0].script.embeddedFiles[0].data += "output_pattern: {{Param." + itemName + "_OutputPattern}} \n";

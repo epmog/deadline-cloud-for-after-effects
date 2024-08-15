@@ -3,14 +3,11 @@ import os
 import shutil
 import ctypes
 from ctypes import wintypes
-import logging
 
 try:
     import winreg
 except ImportError:
     import _winreg as winreg
-
-_logger = logging.getLogger(__name__)
 
 user32 = ctypes.WinDLL('user32', use_last_error=True)
 gdi32 = ctypes.WinDLL('gdi32', use_last_error=True)
@@ -33,7 +30,7 @@ FONT_EXTENSIONS = {'.OTF', 'TTF'}
 
 # Check if the Fonts folder exists, create it if it doesn't
 if not os.path.exists(FONT_LOCATION_USER):
-    _logger.info('Creating User Fonts folder: %s' % FONT_LOCATION_USER)
+    print('Creating User Fonts folder: %s' % FONT_LOCATION_USER)
     os.makedirs(FONT_LOCATION_USER)
 
 def install_font(src_path, scope=INSTALL_SCOPE_USER):
@@ -143,13 +140,14 @@ def _install_fonts(folder):
     fonts = _find_fonts(folder)
     installed_fonts = set()
     if not fonts:
+        print('No fonts to install')
         return
 
     for font in fonts:
-        _logger.info('Installing font: %s' % font)
+        print('Installing font: %s' % font)
         installed, msg = install_font(font)
         if not installed:
-            _logger.error('    Error installing font: %s' % msg)
+            print('    Error installing font: %s' % msg)
         else:
             installed_fonts.add(font)
     return installed_fonts
@@ -157,13 +155,14 @@ def _install_fonts(folder):
 def _remove_fonts(folder):
     fonts = _find_fonts()
     if not fonts:
+        print('No fonts to uninstall')
         return
 
     for font in fonts:
-        _logger.info('Uninstalling font: %s' % font)
+        print('Uninstalling font: %s' % font)
         uninstalled, msg = uninstall_font(font)
         if not uninstalled:
-            _logger.error('    Error uninstalling font: %s' % msg)
+            print('    Error uninstalling font: %s' % msg)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
@@ -181,3 +180,5 @@ if __name__ == '__main__':
         _remove_fonts(args.uninstall)
     else:
         raise RuntimeError('Argparse forces you to specify install or uninstall')
+    
+    print('Done running font installer')

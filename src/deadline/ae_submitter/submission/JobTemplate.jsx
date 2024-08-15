@@ -77,6 +77,11 @@ var OPENJD_TEMPLATE = {
                   "name": "Frame",
                   "type": "INT",
                   "range": "{{Param.Frames}}"
+                },
+                {
+                    "name": "Comp",
+                    "type": "STRING",
+                    "value": "{{Param.CompName}}"
                 }
             ]
         },
@@ -160,7 +165,7 @@ var OPENJD_TEMPLATE = {
                 "filename": "aerender.bat",
                 "type": "TEXT",
                 "runnable": true,
-                "data": "\"%AFTEREFFECTS_ADAPTOR_AERENDER_EXECUTABLE%\" -project \"{{Param.AfterEffectsProjectFile}}\" -comp \"{{Param.CompName}}\" -s {{Task.Param.Frame}} -e {{Task.Param.Frame}} \n"
+                "data": "\"%AFTEREFFECTS_ADAPTOR_AERENDER_EXECUTABLE%\" -project \"{{Param.AfterEffectsProjectFile}}\" -comp \"{{Task.Param.Comp}}\" -s {{Task.Param.Frame}} -e {{Task.Param.Frame}} \n"
             }
             ]
         }
