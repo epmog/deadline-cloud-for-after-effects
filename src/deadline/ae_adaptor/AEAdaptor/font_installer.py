@@ -156,7 +156,7 @@ def _install_fonts(folder):
     return installed_fonts
 
 def _remove_fonts(folder):
-    fonts = _find_fonts()
+    fonts = _find_fonts(folder)
     if not fonts:
         print('No fonts to uninstall')
         return
