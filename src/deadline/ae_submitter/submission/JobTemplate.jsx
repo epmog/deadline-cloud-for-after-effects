@@ -165,7 +165,7 @@ var OPENJD_TEMPLATE = {
                 "filename": "aerender.bat",
                 "type": "TEXT",
                 "runnable": true,
-                "data": "\"%AFTEREFFECTS_ADAPTOR_AERENDER_EXECUTABLE%\" -project \"{{Param.AfterEffectsProjectFile}}\" -comp \"{{Task.Param.Comp}}\" -s {{Task.Param.Frame}} -e {{Task.Param.Frame}} \n"
+                "data": "\"%AFTEREFFECTS_ADAPTOR_AERENDER_EXECUTABLE%\" -project \"{{Param.AfterEffectsProjectFile}}\" -comp \"{{Task.Param.Comp}}\" -s {{Task.Param.Frame}} -e {{Task.Param.Frame}} || exit /b 1 \n"
             }
             ]
         }
